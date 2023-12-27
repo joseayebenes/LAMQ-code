@@ -19,7 +19,6 @@
 set(PRIV_INCLUDE_DIRS_LIST
                       "${APP_GEN_DIR}"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/examples/providers"
-                      "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/examples/lighting-app/lighting-common/include"
                       "${CMAKE_CURRENT_LIST_DIR}/include"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/examples/platform/esp32"
 )
@@ -28,7 +27,6 @@ set(SRC_DIRS_LIST
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/zzz_generated/app-common/app-common/zap-generated/attributes"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/zzz_generated/app-common/app-common/zap-generated"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/examples/providers"
-                      "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/examples/lighting-app/lighting-common/src"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/examples/platform/esp32/ota"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/examples/platform/esp32/common"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/examples/platform/esp32/shell_extension"
@@ -104,12 +102,10 @@ get_filename_component(CHIP_ROOT ${CMAKE_SOURCE_DIR}/third_party/connectedhomeip
 
 include("${CHIP_ROOT}/build/chip/esp32/esp32_codegen.cmake")
 
-chip_app_component_codegen("${CHIP_ROOT}/examples/lighting-app/lighting-common/lighting-app.matter")
-chip_app_component_zapgen("${CHIP_ROOT}/examples/lighting-app/lighting-common/lighting-app.zap")
+chip_app_component_codegen("${CMAKE_SOURCE_DIR}/lamq-app.matter")
+chip_app_component_zapgen("${CMAKE_SOURCE_DIR}/lamq-app.zap")
 
-if (CONFIG_ENABLE_ESP_INSIGHTS_TRACE)
-    target_add_binary_data(${COMPONENT_TARGET} "insights_auth_key.txt" TEXT)
-endif()
+
 
 if (CONFIG_ENABLE_SET_CERT_DECLARATION_API)
     target_add_binary_data(${COMPONENT_TARGET} "certification_declaration.der" BINARY)

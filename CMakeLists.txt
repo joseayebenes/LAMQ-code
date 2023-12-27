@@ -34,7 +34,7 @@ if(${IDF_TARGET} STREQUAL "esp32")
 endif()
 
 
-project(chip-lighting-app)
+project(lamq-app)
 
 # WARNING: This is just an example for using key for decrypting the encrypted OTA image
 # Please do not use it as is.
