@@ -18,7 +18,7 @@
 #      Configuration options CHIP ESP32 demo application.
 #
 
-menu "Demo"
+menu "LAMQ"
 
     choice
         prompt "Device Type"
@@ -39,9 +39,6 @@ menu "Demo"
             depends on IDF_TARGET_ESP32
         config DEVICE_TYPE_ESP32_WROVER_KIT
             bool "ESP32-WROVER-KIT_V4.1"
-            depends on IDF_TARGET_ESP32
-        config DEVICE_TYPE_M5STACK
-            bool "M5Stack"
             depends on IDF_TARGET_ESP32
         config DEVICE_TYPE_ESP32_C3_DEVKITM
             bool "ESP32C3-DevKitM"
@@ -94,7 +91,6 @@ menu "Demo"
         default 26 if DEVICE_TYPE_ESP32_WROVER_KIT
         default 8 if DEVICE_TYPE_ESP32_C3_DEVKITM || DEVICE_TYPE_ESP32H2_DEVKITC || DEVICE_TYPE_ESP32_C2_DEVKITM || DEVICE_TYPE_ESP32_C6_DEVKITC
         default 48 if DEVICE_TYPE_ESP32_S3_DEVKITM
-        default 5 if DEVICE_TYPE_M5STACK
         default 5
         help
             GPIO number (IOxx) to blink on and off or the RMT signal for the addressable LED.
@@ -123,13 +119,7 @@ menu "Demo"
         range 0 5
         default 0 if DEVICE_TYPE_ESP32_DEVKITC
         default 0 if DEVICE_TYPE_ESP32_C3_DEVKITM || DEVICE_TYPE_ESP32_C2_DEVKITM || DEVICE_TYPE_ESP32H2_DEVKITC || DEVICE_TYPE_ESP32_C6_DEVKITC
-        default 3 if DEVICE_TYPE_M5STACK
         default 4 if DEVICE_TYPE_ESP32_WROVER_KIT
-
-    config HAVE_DISPLAY
-        bool
-        default y if DEVICE_TYPE_M5STACK || DEVICE_TYPE_ESP32_WROVER_KIT
-        default n if !(DEVICE_TYPE_M5STACK || DEVICE_TYPE_ESP32_WROVER_KIT)
 
     config RENDEZVOUS_MODE
        int
@@ -139,12 +129,6 @@ menu "Demo"
        default 4 if RENDEZVOUS_MODE_THREAD
        default 8 if RENDEZVOUS_MODE_ETHERNET
 
-    config DISPLAY_AUTO_OFF
-        bool "Automatically turn off the M5Stack's Display after a few seconds"
-        default "y"
-        depends on DEVICE_TYPE_M5STACK
-        help
-            To reduce wear and heat the M5Stack's Display is automatically switched off after a few seconds
 
 endmenu
 

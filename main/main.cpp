@@ -52,8 +52,6 @@
 #include "Rpc.h"
 #endif
 
-#include "DeviceWithDisplay.h"
-
 #if CONFIG_ENABLE_ESP32_DEVICE_INFO_PROVIDER
 #include <platform/ESP32/ESP32DeviceInfoProvider.h>
 #else
@@ -175,7 +173,7 @@ extern "C" void app_main()
 #endif
 
     ESP_LOGI(TAG, "==================================================");
-    ESP_LOGI(TAG, "chip-esp32-light-example starting");
+    ESP_LOGI(TAG, "LAMQ starting");
     ESP_LOGI(TAG, "==================================================");
 
 #if CONFIG_ENABLE_CHIP_SHELL
