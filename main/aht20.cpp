@@ -34,7 +34,7 @@ esp_err_t AHT20::readData(AHT20_Sensor_t *sensorData){
 
     ret = i2c_master_write_to_device((i2c_port_t)i2c_master_num, AHT20_SENSOR_ADDR, write_buf, sizeof(write_buf), I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
     vTaskDelay(pdMS_TO_TICKS(80));
-    ret = i2c_master_read_from_device(i2c_master_num, AHT20_SENSOR_ADDR, data, sizeof(data), I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
+    ret = i2c_master_read_from_device((i2c_port_t)i2c_master_num, AHT20_SENSOR_ADDR, data, sizeof(data), I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
 
     for ( int i = 0; i< sizeof(data); i++ )
     {
