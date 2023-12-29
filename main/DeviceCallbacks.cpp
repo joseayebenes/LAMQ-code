@@ -49,17 +49,12 @@ void AppDeviceCallbacks::PostAttributeChangeCallback(EndpointId endpointId, Clus
     case OnOff::Id:
         OnOnOffPostAttributeChangeCallback(endpointId, attributeId, value);
         break;
-
     case LevelControl::Id:
         OnLevelControlAttributeChangeCallback(endpointId, attributeId, value);
         break;
-
-#if CONFIG_LED_TYPE_RMT
     case ColorControl::Id:
         OnColorControlAttributeChangeCallback(endpointId, attributeId, value);
         break;
-#endif
-
     default:
         ESP_LOGI(TAG, "Unhandled cluster ID: %" PRIu32, clusterId);
         break;

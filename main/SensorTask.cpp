@@ -6,9 +6,12 @@
 #include "driver/i2c.h"
 #include "aht20.h"
 
+#include "air-quality-sensor-manager.h"
+
 #define APP_TASK_NAME "APP"
 #define APP_EVENT_QUEUE_SIZE 10
-#define APP_TASK_STACK_SIZE (1024)
+#define APP_TASK_STACK_SIZE (3*1024)
+#define AIR_QUALITY_SENSOR_ENDPOINT 3
 
 #define I2C_MASTER_SCL_IO           18      /*!< GPIO number used for I2C master clock */
 #define I2C_MASTER_SDA_IO           19      /*!< GPIO number used for I2C master data  */
@@ -19,6 +22,7 @@
 #define I2C_MASTER_TIMEOUT_MS       1000
 
 using namespace ::chip;
+using namespace chip::app::Clusters;
 
 namespace {
 constexpr EndpointId kLightEndpointId = 1;
@@ -28,7 +32,6 @@ constexpr EndpointId kLightEndpointId = 1;
 SensorTask SensorTask::sSensorTask;
 
 AHT20 aht20sensor;
-
 
 CHIP_ERROR SensorTask::StartSensorTask()
 {
@@ -54,6 +57,9 @@ CHIP_ERROR SensorTask::Init(){
 
     aht20sensor.initialize(I2C_MASTER_NUM);
 
+    AirQualitySensorManager::InitInstance(EndpointId(AIR_QUALITY_SENSOR_ENDPOINT));
+    AirQualitySensorManager::GetInstance()->Init();
+
     return err;
 }
 
@@ -61,12 +67,12 @@ void SensorTask::SensorTaskMain(void * pvParameter){
 
     CHIP_ERROR err = sSensorTask.Init();
     AHT20_Sensor_t sensorData;
+    
     while (true)
     {
         aht20sensor.readData(&sensorData);
-
-        printf("Temp: %.2f\n", sensorData.temperature);
-        printf("Hum: %.2f\n", sensorData.humidity);
+        AirQualitySensorManager::GetInstance()->OnTemperatureMeasurementChangeHandler(sensorData.temperature);
+        AirQualitySensorManager::GetInstance()->OnHumidityMeasurementChangeHandler(sensorData.humidity);
         vTaskDelay(pdMS_TO_TICKS(30000));
     }
 }

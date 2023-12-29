@@ -3,6 +3,10 @@
     "idf.flashType": "UART",
     "idf.adapterTargetName": "esp32",
     "files.associations": {
-        "ranges": "c"
+        "ranges": "c",
+        "*.tcc": "cpp",
+        "ios": "cpp",
+        "*.ipp": "cpp",
+        "mstd_atomic": "cpp"
     }
 }
