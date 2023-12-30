@@ -36,19 +36,13 @@ esp_err_t AHT20::readData(AHT20_Sensor_t *sensorData){
     vTaskDelay(pdMS_TO_TICKS(80));
     ret = i2c_master_read_from_device((i2c_port_t)i2c_master_num, AHT20_SENSOR_ADDR, data, sizeof(data), I2C_MASTER_TIMEOUT_MS / portTICK_PERIOD_MS);
 
-    for ( int i = 0; i< sizeof(data); i++ )
-    {
-    printf("0x%02x ", data[i]);
-    }
-    printf("\n");
-
     uint32_t incoming=0;
     incoming |= (uint32_t)data[1]<<16;
     incoming |= (uint32_t)data[2]<<8;
     incoming |= (uint32_t)data[3];
     humidity = incoming >> 4;
 
-    temperature |= (uint32_t)data[3]<<16;
+    temperature |= (uint32_t)data[3]<<16; 
     temperature |= (uint32_t)data[4]<<8;
     temperature |= (uint32_t)data[5];
     temperature = temperature & ~(0xFFF00000);

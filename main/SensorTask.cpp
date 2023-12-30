@@ -11,7 +11,7 @@
 #define APP_TASK_NAME "APP"
 #define APP_EVENT_QUEUE_SIZE 10
 #define APP_TASK_STACK_SIZE (3*1024)
-#define AIR_QUALITY_SENSOR_ENDPOINT 3
+#define AIR_QUALITY_SENSOR_ENDPOINT 0x2
 
 #define I2C_MASTER_SCL_IO           18      /*!< GPIO number used for I2C master clock */
 #define I2C_MASTER_SDA_IO           19      /*!< GPIO number used for I2C master data  */
@@ -57,8 +57,10 @@ CHIP_ERROR SensorTask::Init(){
 
     aht20sensor.initialize(I2C_MASTER_NUM);
 
+    chip::DeviceLayer::PlatformMgr().LockChipStack();
     AirQualitySensorManager::InitInstance(EndpointId(AIR_QUALITY_SENSOR_ENDPOINT));
     AirQualitySensorManager::GetInstance()->Init();
+    chip::DeviceLayer::PlatformMgr().UnlockChipStack();
 
     return err;
 }
@@ -71,8 +73,12 @@ void SensorTask::SensorTaskMain(void * pvParameter){
     while (true)
     {
         aht20sensor.readData(&sensorData);
-        AirQualitySensorManager::GetInstance()->OnTemperatureMeasurementChangeHandler(sensorData.temperature);
-        AirQualitySensorManager::GetInstance()->OnHumidityMeasurementChangeHandler(sensorData.humidity);
-        vTaskDelay(pdMS_TO_TICKS(30000));
+        chip::DeviceLayer::PlatformMgr().LockChipStack();
+        AirQualitySensorManager::GetInstance()->OnTemperatureMeasurementChangeHandler((uint16_t)(sensorData.temperature*100));
+        AirQualitySensorManager::GetInstance()->OnHumidityMeasurementChangeHandler((uint16_t)(sensorData.humidity*100));
+        AirQualitySensorManager::GetInstance()->OnCarbonDioxideMeasurementChangeHandler(500.0);
+        chip::DeviceLayer::PlatformMgr().UnlockChipStack();
+        printf("Temperature: %f, Humidity: %f\n", sensorData.temperature, sensorData.humidity);
+        vTaskDelay(pdMS_TO_TICKS(180000));
     }
 }

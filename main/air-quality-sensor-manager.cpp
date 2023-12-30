@@ -25,30 +25,6 @@ void AirQualitySensorManager::Init()
     mCarbonDioxideConcentrationMeasurementInstance.SetUncertainty(0.0f);
     mCarbonDioxideConcentrationMeasurementInstance.SetLevelValue(LevelValueEnum::kLow);
 
-    // // CO
-    // mCarbonMonoxideConcentrationMeasurementInstance.Init();
-    // mCarbonMonoxideConcentrationMeasurementInstance.SetMinMeasuredValue(MakeNullable(0.0f));
-    // mCarbonMonoxideConcentrationMeasurementInstance.SetMaxMeasuredValue(MakeNullable(1000.0f));
-    // mCarbonMonoxideConcentrationMeasurementInstance.SetMeasuredValue(MakeNullable(2.0f));
-    // mCarbonMonoxideConcentrationMeasurementInstance.SetPeakMeasuredValue(MakeNullable(1.0f));
-    // mCarbonMonoxideConcentrationMeasurementInstance.SetPeakMeasuredValueWindow(320);
-    // mCarbonMonoxideConcentrationMeasurementInstance.SetAverageMeasuredValue(MakeNullable(1.0f));
-    // mCarbonMonoxideConcentrationMeasurementInstance.SetAverageMeasuredValueWindow(320);
-    // mCarbonMonoxideConcentrationMeasurementInstance.SetUncertainty(0.0f);
-    // mCarbonMonoxideConcentrationMeasurementInstance.SetLevelValue(LevelValueEnum::kLow);
-
-    // // NO2
-    // mNitrogenDioxideConcentrationMeasurementInstance.Init();
-    // mNitrogenDioxideConcentrationMeasurementInstance.SetMinMeasuredValue(MakeNullable(0.0f));
-    // mNitrogenDioxideConcentrationMeasurementInstance.SetMaxMeasuredValue(MakeNullable(1000.0f));
-    // mNitrogenDioxideConcentrationMeasurementInstance.SetMeasuredValue(MakeNullable(2.0f));
-    // mNitrogenDioxideConcentrationMeasurementInstance.SetPeakMeasuredValue(MakeNullable(1.0f));
-    // mNitrogenDioxideConcentrationMeasurementInstance.SetPeakMeasuredValueWindow(320);
-    // mNitrogenDioxideConcentrationMeasurementInstance.SetAverageMeasuredValue(MakeNullable(1.0f));
-    // mNitrogenDioxideConcentrationMeasurementInstance.SetAverageMeasuredValueWindow(320);
-    // mNitrogenDioxideConcentrationMeasurementInstance.SetUncertainty(0.0f);
-    // mNitrogenDioxideConcentrationMeasurementInstance.SetLevelValue(LevelValueEnum::kLow);
-
     // PM1
     mPm1ConcentrationMeasurementInstance.Init();
     mPm1ConcentrationMeasurementInstance.SetMinMeasuredValue(MakeNullable(0.0f));
@@ -85,18 +61,6 @@ void AirQualitySensorManager::Init()
     mPm25ConcentrationMeasurementInstance.SetUncertainty(0.0f);
     mPm25ConcentrationMeasurementInstance.SetLevelValue(LevelValueEnum::kLow);
 
-    // // Radon
-    // mRadonConcentrationMeasurementInstance.Init();
-    // mRadonConcentrationMeasurementInstance.SetMinMeasuredValue(MakeNullable(0.0f));
-    // mRadonConcentrationMeasurementInstance.SetMaxMeasuredValue(MakeNullable(1000.0f));
-    // mRadonConcentrationMeasurementInstance.SetMeasuredValue(MakeNullable(2.0f));
-    // mRadonConcentrationMeasurementInstance.SetPeakMeasuredValue(MakeNullable(1.0f));
-    // mRadonConcentrationMeasurementInstance.SetPeakMeasuredValueWindow(320);
-    // mRadonConcentrationMeasurementInstance.SetAverageMeasuredValue(MakeNullable(1.0f));
-    // mRadonConcentrationMeasurementInstance.SetAverageMeasuredValueWindow(320);
-    // mRadonConcentrationMeasurementInstance.SetUncertainty(0.0f);
-    // mRadonConcentrationMeasurementInstance.SetLevelValue(LevelValueEnum::kLow);
-
     // TVOC
     mTotalVolatileOrganicCompoundsConcentrationMeasurementInstance.Init();
     mTotalVolatileOrganicCompoundsConcentrationMeasurementInstance.SetMinMeasuredValue(MakeNullable(0.0f));
@@ -109,29 +73,6 @@ void AirQualitySensorManager::Init()
     mTotalVolatileOrganicCompoundsConcentrationMeasurementInstance.SetUncertainty(0.0f);
     mTotalVolatileOrganicCompoundsConcentrationMeasurementInstance.SetLevelValue(LevelValueEnum::kLow);
 
-    // // Ozone
-    // mOzoneConcentrationMeasurementInstance.Init();
-    // mOzoneConcentrationMeasurementInstance.SetMinMeasuredValue(MakeNullable(0.0f));
-    // mOzoneConcentrationMeasurementInstance.SetMaxMeasuredValue(MakeNullable(1000.0f));
-    // mOzoneConcentrationMeasurementInstance.SetMeasuredValue(MakeNullable(2.0f));
-    // mOzoneConcentrationMeasurementInstance.SetPeakMeasuredValue(MakeNullable(1.0f));
-    // mOzoneConcentrationMeasurementInstance.SetPeakMeasuredValueWindow(320);
-    // mOzoneConcentrationMeasurementInstance.SetAverageMeasuredValue(MakeNullable(1.0f));
-    // mOzoneConcentrationMeasurementInstance.SetAverageMeasuredValueWindow(320);
-    // mOzoneConcentrationMeasurementInstance.SetUncertainty(0.0f);
-    // mOzoneConcentrationMeasurementInstance.SetLevelValue(LevelValueEnum::kLow);
-
-    // // Formaldehyde
-    // mFormaldehydeConcentrationMeasurementInstance.Init();
-    // mFormaldehydeConcentrationMeasurementInstance.SetMinMeasuredValue(MakeNullable(0.0f));
-    // mFormaldehydeConcentrationMeasurementInstance.SetMaxMeasuredValue(MakeNullable(1000.0f));
-    // mFormaldehydeConcentrationMeasurementInstance.SetMeasuredValue(MakeNullable(2.0f));
-    // mFormaldehydeConcentrationMeasurementInstance.SetPeakMeasuredValue(MakeNullable(1.0f));
-    // mFormaldehydeConcentrationMeasurementInstance.SetPeakMeasuredValueWindow(320);
-    // mFormaldehydeConcentrationMeasurementInstance.SetAverageMeasuredValue(MakeNullable(1.0f));
-    // mFormaldehydeConcentrationMeasurementInstance.SetAverageMeasuredValueWindow(320);
-    // mFormaldehydeConcentrationMeasurementInstance.SetUncertainty(0.0f);
-    // mFormaldehydeConcentrationMeasurementInstance.SetLevelValue(LevelValueEnum::kLow);
 }
 
 void AirQualitySensorManager::OnAirQualityChangeHandler(AirQualityEnum newValue)
