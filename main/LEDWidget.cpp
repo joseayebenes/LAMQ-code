@@ -29,7 +29,7 @@ void LEDWidget::Init(void)
 
     // LED strip general initialization, according to your led board design
     led_strip_config_t strip_config = {
-        .strip_gpio_num = CONFIG_LED_GPIO,   // The GPIO that connected to the LED strip's data line
+        .strip_gpio_num = 26,   // The GPIO that connected to the LED strip's data line
         .max_leds = 12,        // The number of LEDs in the strip,
         .led_pixel_format = LED_PIXEL_FORMAT_GRB, // Pixel format of your LED strip
         .led_model = LED_MODEL_WS2812,            // LED strip model

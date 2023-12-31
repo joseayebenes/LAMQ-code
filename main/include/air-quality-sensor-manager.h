@@ -56,18 +56,6 @@ public:
     void OnCarbonDioxideMeasurementChangeHandler(float newValue);
 
     /**
-     * @brief Handles changes in Carbon Monoxide concentration measurement.
-     * @param[in] newValue The new air value to be applied.
-     */
-    void OnCarbonMonoxideMeasurementChangeHandler(float newValue);
-
-    /**
-     * @brief Handles changes in Nitrogen Dioxide concentration measurement.
-     * @param[in] newValue The new air value to be applied.
-     */
-    void OnNitrogenDioxideMeasurementChangeHandler(float newValue);
-
-    /**
      * @brief Handles changes in PM1 concentration measurement.
      * @param[in] newValue The new air value to be applied.
      */
@@ -85,11 +73,6 @@ public:
      */
     void OnPm25MeasurementChangeHandler(float newValue);
 
-    /**
-     * @brief Handles changes in Radon concentration measurement.
-     * @param[in] newValue The new air value to be applied.
-     */
-    void OnRadonMeasurementChangeHandler(float newValue);
 
     /**
      * @brief Handles changes in Total Volatile Organic Compounds concentration measurement.
@@ -97,17 +80,6 @@ public:
      */
     void OnTotalVolatileOrganicCompoundsMeasurementChangeHandler(float newValue);
 
-    /**
-     * @brief Handles changes in Ozone concentration measurement.
-     * @param[in] newValue The new air value to be applied.
-     */
-    void OnOzoneMeasurementChangeHandler(float newValue);
-
-    /**
-     * @brief Handles changes in Formaldehyde concentration measurement.
-     * @param[in] newValue The new air value to be applied.
-     */
-    void OnFormaldehydeMeasurementChangeHandler(float newValue);
 
     /**
      * @brief Handles changes in Temperature measurement.
