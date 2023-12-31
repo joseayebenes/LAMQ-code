@@ -1,5 +1,5 @@
 {
-    "idf.port": "/dev/ttyUSB1",
+    "idf.port": "/dev/ttyUSB0",
     "idf.flashType": "UART",
     "idf.adapterTargetName": "esp32",
     "files.associations": {
@@ -7,6 +7,14 @@
         "*.tcc": "cpp",
         "ios": "cpp",
         "*.ipp": "cpp",
-        "mstd_atomic": "cpp"
+        "mstd_atomic": "cpp",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "span": "cpp",
+        "vector": "cpp",
+        "mstd_iterator": "cpp",
+        "compare": "cpp",
+        "cstddef": "cpp"
     }
 }
