@@ -29,7 +29,6 @@ esp_err_t MHZ14A::initialize()
 esp_err_t MHZ14A::readData(uint32_t *co2Ppm)
 {
 
-    printf("Reading data from MH-Z14A\n");
     uart_write_bytes(UART_NUM_1, "\xff\x01\x86\x00\x00\x00\x00\x00\x79", 9);
     const int rxBytes = uart_read_bytes(UART_NUM_1, buffer, MHZ14A_RX_BUF_SIZE, 1000 / portTICK_PERIOD_MS);
     if (rxBytes > 0) {
@@ -42,11 +41,6 @@ esp_err_t MHZ14A::readData(uint32_t *co2Ppm)
             return ESP_FAIL;
         }
         *co2Ppm = (uint32_t)buffer[2]<<8 | buffer[3];
-        // print buffer
-        for (int i = 0; i < rxBytes; i++) {
-            printf("%02x ", buffer[i]);
-        }
-        printf("\n");
     }
     return ESP_OK;
 }
