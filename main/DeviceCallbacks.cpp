@@ -18,8 +18,9 @@
 #include "AppTask.h"
 
 #include "DeviceCallbacks.h"
-#include "Globals.h"
+
 #include "LEDWidget.h"
+#include "SensorTask.h"
 
 #include <app/util/util.h>
 
@@ -139,10 +140,12 @@ void emberAfOnOffClusterInitCallback(EndpointId endpoint)
 
 void AppDeviceCallbacksDelegate::OnIPv4ConnectivityEstablished()
 {
-    wifiLED.Set(true);
+    // wifiLED.Set(true);
+    //sensorTask.Set(true);
 }
 
 void AppDeviceCallbacksDelegate::OnIPv4ConnectivityLost()
 {
-    wifiLED.Set(false);
+    // wifiLED.Set(false);
+    //sensorTask.Set(false);
 }

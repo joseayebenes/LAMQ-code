@@ -34,14 +34,13 @@ using namespace ::chip::DeviceLayer;
 
 static const char TAG[] = "app-task";
 
-LEDWidget AppLED;
-
 namespace {
 constexpr EndpointId kLightEndpointId = 1;
 QueueHandle_t sAppEventQueue;
 TaskHandle_t sAppTaskHandle;
 } // namespace
 
+LEDWidget AppLED;
 AppTask AppTask::sAppTask;
 
 CHIP_ERROR AppTask::StartAppTask()

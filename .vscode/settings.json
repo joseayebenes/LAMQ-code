@@ -15,6 +15,7 @@
         "vector": "cpp",
         "mstd_iterator": "cpp",
         "compare": "cpp",
-        "cstddef": "cpp"
+        "cstddef": "cpp",
+        "locale": "cpp"
     }
 }

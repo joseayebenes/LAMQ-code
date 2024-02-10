@@ -16,11 +16,14 @@ class SensorTask
 public:
     CHIP_ERROR StartSensorTask();
     static void SensorTaskMain(void * pvParameter);
-
+    void Set(bool state){
+        mState = state;
+    }
 private:
     friend SensorTask & GetSensorTask(void);
     CHIP_ERROR Init();
     static SensorTask sSensorTask;
+    bool mState;
 };
 
 inline SensorTask & GetSensorTask(void)

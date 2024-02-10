@@ -74,6 +74,7 @@ CHIP_ERROR SensorTask::Init(){
     return err;
 }
 
+
 /**
  *  function to calculate air quality index from the sensor data
  * 
@@ -106,10 +107,14 @@ void SensorTask::SensorTaskMain(void * pvParameter){
     AirQuality::AirQualityEnum airQuality;
     while (true)
     {
+        // if(!mState){
+            vTaskDelay(pdMS_TO_TICKS(1000));
+        //     continue;
+        // }
         aht20sensor.readData(&sensorData);
         ags10sensor.readData(&vocPpb);
         pms5003sensor.readData(&pms5003Data);
-        mhz14asensor.readData(&co2Ppm);       
+        mhz14asensor.readData(&co2Ppm);
         calculateAirQualityIndex(&airQuality, pms5003Data.pm2_5_standard, pms5003Data.pm10_0_standard, vocPpb, co2Ppm);
         chip::DeviceLayer::PlatformMgr().LockChipStack();
         AirQualitySensorManager::GetInstance()->OnTemperatureMeasurementChangeHandler((uint16_t)(sensorData.temperature*100));

@@ -56,7 +56,6 @@ void LEDWidget::Set(bool state)
         return;
 
     mState = state;
-    printf("SET\n");
     DoSet();
 }
 
@@ -64,7 +63,6 @@ void LEDWidget::Toggle()
 {
     ESP_LOGI(TAG, "Toggling state to %d", !mState);
     mState = !mState;
-    printf("Toggle\n");
     DoSet();
 }
 
@@ -96,7 +94,6 @@ void LEDWidget::SetColor(uint8_t Hue, uint8_t Saturation)
 
     mHue        = Hue;
     mSaturation = Saturation;
-    printf("SetColor\n");
     DoSet();
 }
 
@@ -110,7 +107,6 @@ void LEDWidget::DoSet(void)
         HsvColor_t hsv = { mHue, mSaturation, brightness };
         RgbColor_t rgb = HsvToRgb(hsv);
         //led_strip_clear(mStrip);
-        printf("RGB: %d, %d, %d\n", rgb.r, rgb.g, rgb.b);
         led_strip_set_pixel(mStrip, 0,      rgb.r,       rgb.g,      rgb.b);
         led_strip_set_pixel(mStrip, 1,    rgb.r,       rgb.g,      rgb.b);
         led_strip_set_pixel(mStrip, 2,      rgb.r,       rgb.g,      rgb.b);

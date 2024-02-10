@@ -37,7 +37,6 @@ public:
 private:
     bool mState;
     uint8_t mBrightness;
-
     uint8_t mHue;
     uint8_t mSaturation;
     led_strip_handle_t  mStrip;
