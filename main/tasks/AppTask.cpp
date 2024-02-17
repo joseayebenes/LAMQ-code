@@ -21,6 +21,7 @@
 #include "freertos/FreeRTOS.h"
 
 #include <app-common/zap-generated/attributes/Accessors.h>
+#include <protocols/interaction_model/StatusCode.h>
 
 #define APP_TASK_NAME "APP"
 #define APP_EVENT_QUEUE_SIZE 10
@@ -138,7 +139,7 @@ void AppTask::UpdateClusterState()
 {
     ESP_LOGI(TAG, "Writing to OnOff cluster");
     // write the new on/off value
-    EmberAfStatus status = Clusters::OnOff::Attributes::OnOff::Set(kLightEndpointId, AppLED.IsTurnedOn());
+    Protocols::InteractionModel::Status status = Clusters::OnOff::Attributes::OnOff::Set(kLightEndpointId, AppLED.IsTurnedOn());
 
     if (status != EMBER_ZCL_STATUS_SUCCESS)
     {

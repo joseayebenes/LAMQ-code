@@ -20,10 +20,18 @@ set(PRIV_INCLUDE_DIRS_LIST
                       "${APP_GEN_DIR}"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/examples/providers"
                       "${CMAKE_CURRENT_LIST_DIR}/include"
+                      "${CMAKE_CURRENT_LIST_DIR}/light/include"
+                      "${CMAKE_CURRENT_LIST_DIR}/sensors/include"
+                      "${CMAKE_CURRENT_LIST_DIR}/tasks/include"
+                      "${CMAKE_CURRENT_LIST_DIR}/matter/include"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/examples/platform/esp32"
 )
 set(SRC_DIRS_LIST
                       "${CMAKE_CURRENT_LIST_DIR}"
+                      "${CMAKE_CURRENT_LIST_DIR}/light"
+                      "${CMAKE_CURRENT_LIST_DIR}/sensors"
+                      "${CMAKE_CURRENT_LIST_DIR}/tasks"
+                      "${CMAKE_CURRENT_LIST_DIR}/matter"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/zzz_generated/app-common/app-common/zap-generated/attributes"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/zzz_generated/app-common/app-common/zap-generated"
                       "${CMAKE_SOURCE_DIR}/third_party/connectedhomeip/examples/providers"
