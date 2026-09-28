@@ -1,4 +1,6 @@
 /build/
 /sdkconfig
 /sdkconfig.old
+/managed_components/
+*.zap~
 main/insights_auth_key.txt

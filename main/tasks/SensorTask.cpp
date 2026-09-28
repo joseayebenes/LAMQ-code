@@ -67,8 +67,8 @@ CHIP_ERROR SensorTask::Init(){
     mhz14asensor.initialize();
 
     chip::DeviceLayer::PlatformMgr().LockChipStack();
+    // InitInstance() already calls Init()
     AirQualitySensorManager::InitInstance(EndpointId(AIR_QUALITY_SENSOR_ENDPOINT));
-    AirQualitySensorManager::GetInstance()->Init();
     chip::DeviceLayer::PlatformMgr().UnlockChipStack();
 
     return err;
@@ -117,9 +117,8 @@ void SensorTask::SensorTaskMain(void * pvParameter){
         mhz14asensor.readData(&co2Ppm);
         calculateAirQualityIndex(&airQuality, pms5003Data.pm2_5_standard, pms5003Data.pm10_0_standard, vocPpb, co2Ppm);
         chip::DeviceLayer::PlatformMgr().LockChipStack();
-        AirQualitySensorManager::GetInstance()->OnTemperatureMeasurementChangeHandler((uint16_t)(sensorData.temperature*100));
+        AirQualitySensorManager::GetInstance()->OnTemperatureMeasurementChangeHandler((int16_t)(sensorData.temperature*100));
         AirQualitySensorManager::GetInstance()->OnHumidityMeasurementChangeHandler((uint16_t)(sensorData.humidity*100));
-        AirQualitySensorManager::GetInstance()->OnCarbonDioxideMeasurementChangeHandler(500.0);
         AirQualitySensorManager::GetInstance()->OnTotalVolatileOrganicCompoundsMeasurementChangeHandler((float)vocPpb);
         AirQualitySensorManager::GetInstance()->OnPm25MeasurementChangeHandler((uint16_t)pms5003Data.pm2_5_standard);
         AirQualitySensorManager::GetInstance()->OnPm10MeasurementChangeHandler((float)pms5003Data.pm10_0_standard); 
